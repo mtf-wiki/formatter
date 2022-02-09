@@ -1,0 +1,14 @@
+#!/usr/bin/sh
+cat $1 |
+sed -E 's/([0-9a-zA-Z])([\xe4\xb8\x80-\xe9\xbe\xa5])/\1 \2/g'|
+sed -E 's/([\xe4\xb8\x80-\xe9\xbe\xa5])([0-9a-zA-Z])/\1 \2/g' |
+sed -E 's/([0-9a-zA-Z%])。/\1．/g' |
+sed -E 's/^ +$//g' |
+sed -E 's/^(! +) +/\1 /g' |
+sed -E s/\n\n\n+/\n\n/g > $1
+#sed -E s/[Mm][Tt][Ff]/MtF/g |
+#sed s/lgbt/LGBT/g |
+#sed s/qq/QQ/g |
+#sed s/srs/SRS/g |
+#sed s/hrt/HRT/g |
+#sed s/rle/RLE/g > $1
